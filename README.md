@@ -38,29 +38,47 @@ Allows users to upload their garage sale location as well as the items that they
 
 ### 2. Screen Archetypes
 
- * [list first screen here]
-   * [list associated required story here]
-   * ...
- * [list second screen here]
-   * [list associated required story here]
-   * ...
+ * Login Screen
+   * Enter username and password to log into your account
+   * Signup button if you don't have an account
+ * Signup Screen
+   * Enter a unique username
+   * Enter a strong password
+ * List of items (Home Page)
+   * Show a list of all items that are being sold
+   * Navigation tab with home, new item, profile
+ * Item Page
+   * Name of garage sale
+   * Description of the item being sold
+   * Able to purchase it
+ * New Listing Page
+   * Set the name of your garage sale
+   * Have a list of your items
+   * Button to add a new item
+ * New Item Page
+   * Updload an image of the item
+   * Description and other labels needed
+   * Button to add the item
+ * Profile Page
+   * A list of items that you have purchased
+   * A list of items that you are selling
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
- * [fill out your first tab]
- * [fill out your second tab]
- * [fill out your third tab]
+ * Home
+ * New Item
+ * Profile
 
 **Flow Navigation** (Screen to Screen)
 
- * [list first screen here]
-   * [list screen navigation here]
-   * ...
- * [list second screen here]
-   * [list screen navigation here]
-   * ...
+ * Login Page -> Home Screen
+ * Login Page -> Signup Page -> Login Page
+ * Home Page -> Item Page
+ * New Listing Page -> New Item Page
+ * New Item Page -> Home Screen
+ 
    
 ## Wireframes
 ![GarageSaleApp](https://i.imgur.com/CxH3dkJ.png)
