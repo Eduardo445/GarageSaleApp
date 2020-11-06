@@ -19,8 +19,7 @@ Allows users to upload their garage sale location as well as the items that they
 - **Habit:** Users can browse through garage sales and buy items. Users can also list their garage sale and items.
 - **Scope:** 
 - V1 User can create a garage sale and items to sell, other users will be able to see the garage sales and purchase items. 
-- V2 Garage sale location can be seen via Google maps
-- V3?
+- V2 Garage sale location can be seen via Google maps (If time permits)
 
 ## Product Spec
 
