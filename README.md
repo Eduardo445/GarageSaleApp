@@ -28,13 +28,17 @@ Allows users to upload their garage sale location as well as the items that they
 
 **Required Must-have Stories**
 
- * [fill in your required user stories here]
- * ...
+ * Set up the Database with Parse
+ * Login, Logout, Signout 
+ * Home Screen that shows all the garage sales itens
+ * Able to make a new listing item
+ * Able to click on garage sale item for details and purchase
+ * See a list of items purchase in profile
+ * See a list of items that you are selling in profile
 
 **Optional Nice-to-have Stories**
 
- * [fill in your required user stories here]
- * ...
+ * Filter the Garage Sales in Home Screen
 
 ### 2. Screen Archetypes
 
@@ -62,6 +66,7 @@ Allows users to upload their garage sale location as well as the items that they
  * Profile Page
    * A list of items that you have purchased
    * A list of items that you are selling
+   * A logout button
 
 ### 3. Navigation
 
