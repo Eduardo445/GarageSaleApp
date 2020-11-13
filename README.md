@@ -92,10 +92,90 @@ Allows users to upload their garage sale location as well as the items that they
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | Unique ID provided by Parse |
+   | username      | String   | Username of user |
+   | password      | String   | Password of user |
+   | purchased     | Array    | List of items the user has bought |
+   
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the team (default field) |
+   | userID        | Pointer  | Connect the post to its respective user |
+   | location      | String   | Location of the garage sale post |
+   | name          | String   | Name of the garage sale |
+   | createdAt     | DateTime | Automatic date by Parse |
+   | closed        | Bool     | Know if the post is concluded |
+   
+#### Item
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the team (default field) |
+   | postID        | Pointer  | Pointer to the post |
+   | image         | File     | Image of the item being sold |
+   | name          | String   | Name of the item |
+   | price         | Number   | Price of the item |
+   | description   | String   | Description of the garage sale item sale |
+   | sold          | Boolean  | Check if item has been sold or not |
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+- Login Screen
+  - (Read/GET) Query to login if user exists
+  - (Create/POST) Query to create new user
+```Swift
+// For creating a new user
+ParseUser user = new ParseUser();
+user.setUsername(username);
+user.setPassword(password);
+user.signUpInBackground(new SignUpCallback() {
+  @Override
+  public void done(ParseException e) {
+      if (e == null){
+          Toast.makeText(LoginActivity.this, "Successfully signed up!", Toast.LENGTH_SHORT).show();
+          goMainActivity();
+      }
+      else{
+          Toast.makeText(LoginActivity.this, "Signup error, something went wrong " + e, Toast.LENGTH_SHORT).show();
+          return;
+      }
+  }
+});
+```
+- Home Feed Screen
+  - (Read/GET) Query to get all garage sale listings
+  - (Create/POST) Create a new Garage Sale
+```Swift
+// Query to get all garage sale listings
+ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+query.include(Post.KEY_USER);
+query.setLimit(20);
+query.addDescendingOrder(Post.KEY_CREATED);
+query.include(Post.KEY_USER);
+query.findInBackground(new FindCallback<Post>() {
+  @Override
+  public void done(List<Post> posts, ParseException e) {
+      if (e != null){
+          Log.e(TAG, "Issue with getting posts", e);
+      }
+      for (Post post:posts){
+          Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+      }
+      allPosts.addAll(posts);
+      adapter.notifyDataSetChanged();
+  }
+});
+```
+- New Listing Screen
+  - (Create/POST) Create a new garage sale object
+  - (Read/GET) Query to get all the list of items in the garage sale
+- New Item Screen
+  - (Create/POST) Create a new garage sale item object
