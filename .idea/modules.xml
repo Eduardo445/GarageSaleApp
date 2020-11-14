@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GarageSaleApp.iml" filepath="$PROJECT_DIR$/.idea/modules/GarageSaleApp.iml" group="GarageSaleApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="GarageSaleApp/app" />
     </modules>
   </component>
 </project>
