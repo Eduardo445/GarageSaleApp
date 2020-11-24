@@ -51,8 +51,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
         public void bind(Post post){
-            tvLocation.setText(post.getKeyLocation());
-            tvName.setText(post.getKeyName());
+//            tvLocation.setText(post.getKeyLocation());
+//            tvName.setText(post.getKeyName());
         }
     }
 }
