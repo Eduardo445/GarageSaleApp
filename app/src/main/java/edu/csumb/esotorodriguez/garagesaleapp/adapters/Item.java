@@ -1,9 +1,8 @@
-package edu.csumb.esotorodriguez.garagesaleapp.Adapters;
+package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 @ParseClassName("Item")
 public class Item extends ParseObject {
