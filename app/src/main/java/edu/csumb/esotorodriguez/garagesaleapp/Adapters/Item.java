@@ -16,13 +16,13 @@ public class Item extends ParseObject {
     public static final String KEY_SOLD = "sold";
     public static final String KEY_CREATED_KEY = "createdAt";
 
-    public ParseUser getPost() {
-        return getPa(KEY_POST);
-    }
-
-    public void setPost(ParseUser post) {
-        put(KEY_POST, post);
-    }
+//    public ParseUser getPost() {
+//        return getPa(KEY_POST);
+//    }
+//
+//    public void setPost(ParseUser post) {
+//        put(KEY_POST, post);
+//    }
 
     public String getItemName() {
         return getString(KEY_NAME);
