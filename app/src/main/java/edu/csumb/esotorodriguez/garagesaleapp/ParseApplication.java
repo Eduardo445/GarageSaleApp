@@ -5,7 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
-import edu.csumb.esotorodriguez.garagesaleapp.Adapters.Post;
+import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
 public class ParseApplication extends Application {
 

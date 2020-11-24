@@ -1,4 +1,4 @@
-package edu.csumb.esotorodriguez.garagesaleapp.Adapters;
+package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
@@ -7,7 +7,7 @@ import com.parse.ParseUser;
 @ParseClassName("Post")
 public class Post extends ParseObject {
 
-    public static final String KEY_USER = "user";
+    public static final String KEY_USER = "userID";
     public static final String KEY_NAME = "name";
     public static final String KEY_LOCATION = "location";
     public static final String KEY_CLOSED = "closed";
