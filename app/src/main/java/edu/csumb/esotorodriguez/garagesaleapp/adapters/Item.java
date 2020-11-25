@@ -3,6 +3,7 @@ package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Item")
 public class Item extends ParseObject {
@@ -15,13 +16,13 @@ public class Item extends ParseObject {
     public static final String KEY_SOLD = "sold";
     public static final String KEY_CREATED_KEY = "createdAt";
 
-//    public ParseUser getPost() {
-//        return getPa(KEY_POST);
-//    }
-//
-//    public void setPost(ParseUser post) {
-//        put(KEY_POST, post);
-//    }
+    public ParseObject getPost() {
+        return getParseObject(KEY_POST);
+    }
+
+    public void setPost(ParseObject post) {
+        put(KEY_POST, post);
+    }
 
     public String getItemName() {
         return getString(KEY_NAME);
@@ -45,6 +46,14 @@ public class Item extends ParseObject {
 
     public void setDescription(String description) {
         put(KEY_DESCRIPTION, description);
+    }
+
+    public Double getPrice() {
+        return getDouble(KEY_PRICE);
+    }
+
+    public void setPrice(Double price) {
+        put(KEY_PRICE, price);
     }
 
 }

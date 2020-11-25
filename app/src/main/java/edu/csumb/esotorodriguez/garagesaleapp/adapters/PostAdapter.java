@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.parceler.Parcels;
@@ -16,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
-import edu.csumb.esotorodriguez.garagesaleapp.models.ItemsActivity;
+import edu.csumb.esotorodriguez.garagesaleapp.ItemsActivity;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
@@ -31,7 +30,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.garage_sale_item, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.garage_sale, parent, false);
             return new ViewHolder(view);
     }
 
