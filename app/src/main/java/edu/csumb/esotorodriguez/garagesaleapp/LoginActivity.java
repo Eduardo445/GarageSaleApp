@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
@@ -25,6 +26,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (ParseUser.getCurrentUser() != null) {
+            goMainActivity();
+        }
+
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -39,6 +45,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick signup button");
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                signupUser(username, password);
+            }
+        });
     }
 
     private void loginUser(String username, String password) {
@@ -52,6 +67,28 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 goMainActivity();
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void signupUser(final String username, final String password) {
+        Log.i(TAG, "Attempting to signup user " + username);
+        // Create the ParseUser
+        final ParseUser user = new ParseUser();
+        // Set core properties
+        user.setUsername(username);
+        user.setPassword(password);
+        // Invoke signUpInBackground
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e != null) {
+                    // TODO: better error handling
+                    Log.e(TAG, "Issue with signup", e);
+                    Toast.makeText(LoginActivity.this, "Issue with singup", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    Toast.makeText(LoginActivity.this, "Success! Now login!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
