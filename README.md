@@ -29,16 +29,16 @@ Allows users to upload their garage sale location as well as the items that they
 
  * Set up the Database with Parse [x]
  * Login [x]
- * Logout, Signout 
  * Home Screen that shows all the garage sales itens [x]
+ * Able to click on garage sale item for details and purchase [x]
  * Able to make a new listing item
- * Able to click on garage sale item for details and purchase
  * See a list of items purchase in profile
  * See a list of items that you are selling in profile
+ * Logout, Signout 
 
  ### Video
  <img src='recording.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
- 
+ <img src='recording112720' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 **Optional Nice-to-have Stories**
 
  * Filter the Garage Sales in Home Screen
