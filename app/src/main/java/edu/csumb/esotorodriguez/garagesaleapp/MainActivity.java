@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.GaragePostsFragment;
-import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewItemFragment;
+import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewPostFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.ProfileFragment;
 
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new GaragePostsFragment();
                         break;
                     case R.id.action_compose:
-                        fragment = new NewItemFragment();
+                        fragment = new NewPostFragment();
                         break;
                     case R.id.action_profile:
                     default:

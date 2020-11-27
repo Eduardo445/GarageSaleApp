@@ -4,7 +4,10 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 @ParseClassName("Post")
+@Parcel(analyze = Post.class)
 public class Post extends ParseObject {
 
     public static final String KEY_USER = "userID";
@@ -12,6 +15,8 @@ public class Post extends ParseObject {
     public static final String KEY_LOCATION = "location";
     public static final String KEY_CLOSED = "closed";
     public static final String KEY_CREATED_KEY = "createdAt";
+
+    public Post(){}
 
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
