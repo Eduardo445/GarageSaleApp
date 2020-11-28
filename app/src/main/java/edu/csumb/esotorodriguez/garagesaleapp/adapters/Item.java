@@ -19,6 +19,7 @@ public class Item extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_PRICE = "price";
     public static final String KEY_SOLD = "sold";
+
     public static final String KEY_CREATED_KEY = "createdAt";
 
     public Item(){}

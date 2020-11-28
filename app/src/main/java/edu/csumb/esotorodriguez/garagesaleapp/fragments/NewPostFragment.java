@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -28,6 +29,7 @@ import java.util.List;
 import edu.csumb.esotorodriguez.garagesaleapp.NewItemActivity;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
+import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
 /**
@@ -50,7 +52,8 @@ public class NewPostFragment extends Fragment {
     private RecyclerView rvItems;
     private Button btnAddItem;
     private Button btnPost;
-    private List<Item> itemList;
+    private static final ArrayList<Item> itemList = new ArrayList<Item>();
+    protected ItemAdapter adapter;
 
     public NewPostFragment() {
         // Required empty public constructor
@@ -98,10 +101,23 @@ public class NewPostFragment extends Fragment {
         rvItems = view.findViewById(R.id.rvItems);
         btnAddItem = view.findViewById(R.id.btnAddItem);
         btnPost = view.findViewById(R.id.btnPost);
-        itemList = new ArrayList<Item>();
+
+        Item i = new Item();
+        if (getArguments() != null) {
+            i = getArguments().getParcelable("NewItemActivity");
+            itemList.add(i);
+            Toast.makeText(getContext(), "item added! " + i.getItemName(), Toast.LENGTH_SHORT).show();
+        }
         //get item from NewItemActivty
         //add it to the itemList
         //display on RecycleView
+
+        adapter = new ItemAdapter(getContext(), itemList);
+        // 3. set the adapter on the recycler view
+        rvItems.setAdapter(adapter);
+        // 4. set the layout manager on the recycler
+        rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter.notifyDataSetChanged();
 
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override

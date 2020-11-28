@@ -3,6 +3,9 @@ package edu.csumb.esotorodriguez.garagesaleapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,6 +27,7 @@ import java.io.File;
 
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
+import edu.csumb.esotorodriguez.garagesaleapp.fragments.GarageItemFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewPostFragment;
 
 public class NewItemActivity extends AppCompatActivity {
@@ -39,7 +43,7 @@ public class NewItemActivity extends AppCompatActivity {
     private File photoFile;
     public static final String TAG = "NewItemActivity";
     private Item item;
-    private NewPostFragment newPostFragment;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,21 @@ public class NewItemActivity extends AppCompatActivity {
                 item.setItemName(name);
                 item.setPrice(price);
                 //go back to NewPostFragment, parse back item object
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TAG, item);
 
+                Fragment fragment = new NewPostFragment();
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction().replace(R.id.new_item_activity, fragment).commit();
+                //onBackPressed();
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void launchCamera() {
