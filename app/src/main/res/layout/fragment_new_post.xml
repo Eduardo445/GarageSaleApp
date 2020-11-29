@@ -7,38 +7,27 @@
     tools:context=".fragments.NewPostFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-
     <EditText
-        android:id="@+id/etGarageSaleName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Garage sale name"
-        android:inputType="textPersonName" />
+            android:id="@+id/etGarageSaleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Garage sale name"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/etLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Location"
+            android:inputType="textPersonName" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvItems"
-        android:layout_width="match_parent"
-        android:layout_height="147dp" />
+        <Button
+            android:id="@+id/btnPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done" />
 
-    <Button
-        android:id="@+id/btnAddItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Item" />
 
-    <Button
-        android:id="@+id/btnPost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post" />
 </LinearLayout>

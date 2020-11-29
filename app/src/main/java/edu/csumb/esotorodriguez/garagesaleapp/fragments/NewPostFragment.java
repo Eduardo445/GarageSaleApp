@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,11 +50,8 @@ public class NewPostFragment extends Fragment {
     private String mParam2;
     private EditText etGarageSaleName;
     private EditText etLocation;
-    private RecyclerView rvItems;
-    private Button btnAddItem;
     private Button btnPost;
-    private static final ArrayList<Item> itemList = new ArrayList<Item>();
-    protected ItemAdapter adapter;
+    private Post post;
 
     public NewPostFragment() {
         // Required empty public constructor
@@ -90,6 +88,9 @@ public class NewPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if(getArguments() != null){
+            post = getArguments().getParcelable("MainActivity");
+        }
         return inflater.inflate(R.layout.fragment_new_post, container, false);
     }
 
@@ -98,34 +99,8 @@ public class NewPostFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         etGarageSaleName = view.findViewById(R.id.etGarageSaleName);
         etLocation = view.findViewById(R.id.etLocation);
-        rvItems = view.findViewById(R.id.rvItems);
-        btnAddItem = view.findViewById(R.id.btnAddItem);
         btnPost = view.findViewById(R.id.btnPost);
 
-        Item i = new Item();
-        if (getArguments() != null) {
-            i = getArguments().getParcelable("NewItemActivity");
-            itemList.add(i);
-            Toast.makeText(getContext(), "item added! " + i.getItemName(), Toast.LENGTH_SHORT).show();
-        }
-        //get item from NewItemActivty
-        //add it to the itemList
-        //display on RecycleView
-
-        adapter = new ItemAdapter(getContext(), itemList);
-        // 3. set the adapter on the recycler view
-        rvItems.setAdapter(adapter);
-        // 4. set the layout manager on the recycler
-        rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter.notifyDataSetChanged();
-
-        btnAddItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), NewItemActivity.class);
-                startActivity(intent);
-            }
-        });
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,10 +108,6 @@ public class NewPostFragment extends Fragment {
                 String location = etLocation.getText().toString();
                 if (garageSaleName.isEmpty() || location.isEmpty()){
                     Toast.makeText(view.getContext(), "Field input is empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(itemList.isEmpty()){
-                    Toast.makeText(view.getContext(), "Item list is empty, please add at least 1 item", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 //save post into database
@@ -155,19 +126,15 @@ public class NewPostFragment extends Fragment {
                         Log.i(TAG, "Post save was successful");
                     }
                 });
-                //save each item added into database
-                for (Item i : itemList){
-                    i.setPost(post);
-                    i.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            Log.e(TAG, "Error while saving", e);
-                            Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    });
-                    Log.i(TAG, "Post save was successful");
-                }
+
+                /*
+                FragmentManager fragmentManager = getChildFragmentManager();
+                Fragment fragment = new NewItemFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TAG, post);
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction().replace(R.id.compose_fragment, fragment).commit();
+                */
             }
         });
     }
