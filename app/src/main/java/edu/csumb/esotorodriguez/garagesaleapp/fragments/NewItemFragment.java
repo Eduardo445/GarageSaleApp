@@ -66,10 +66,11 @@ public class NewItemFragment extends Fragment {
     public static final String TAG = "NewItemActivity";
     private Item item;
     private Post post;
+    /*
     private RecyclerView rvItems;
     protected ItemAdapter adapter;
     protected List<Item> allItems;
-
+    */
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -124,12 +125,10 @@ public class NewItemFragment extends Fragment {
         ivImage = getView().findViewById(R.id.ivImage);
         btnTakePicture = getView().findViewById(R.id.btnTakePicture);
         btnAdd = getView().findViewById(R.id.btnAdd);
-        rvItems = getView().findViewById(R.id.rvItem);
+
         item = new Item();
-        // Steps to use the recycler view:
-        // 0. create layout for one row in the list
-        // 1. create the adapter
-        // 2. create the data source
+        /*
+        rvItems = getView().findViewById(R.id.rvItem);
         allItems = new ArrayList<>();
         adapter = new ItemAdapter(getContext(), allItems);
 
@@ -139,6 +138,13 @@ public class NewItemFragment extends Fragment {
         // 4. set the layout manager on the recycler
         rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
         queryItems();
+        */
+        btnTakePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchCamera();
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,17 +172,17 @@ public class NewItemFragment extends Fragment {
                         etName.setText("");
                         etPrice.setText("");
                         ivImage.setImageResource(0);
-                        allItems.clear();
-                        queryItems();
+                        Toast.makeText(getContext(), "Successfully added item!", Toast.LENGTH_SHORT).show();
+                        //allItems.clear();
+                        //queryItems();
                     }
                 });
-
             }
         });
 
         super.onViewCreated(view, savedInstanceState);
     }
-
+    /*
     protected void queryItems() {
         ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
         query.whereEqualTo("postID", post);
@@ -199,7 +205,7 @@ public class NewItemFragment extends Fragment {
             }
         });
     }
-
+    */
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
