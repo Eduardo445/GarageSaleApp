@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -126,15 +127,10 @@ public class NewPostFragment extends Fragment {
                         Log.i(TAG, "Post save was successful");
                     }
                 });
-
-                /*
-                FragmentManager fragmentManager = getChildFragmentManager();
-                Fragment fragment = new NewItemFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(TAG, post);
-                fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.compose_fragment, fragment).commit();
-                */
+                assert getFragmentManager() != null;
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.garageContainer, new NewItemFragment(), "NewItemFragment");
+                ft.commit();
             }
         });
     }
