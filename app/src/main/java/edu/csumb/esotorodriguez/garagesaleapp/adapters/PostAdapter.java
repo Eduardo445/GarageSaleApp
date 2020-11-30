@@ -68,7 +68,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             super(itemView);
             garageCard = itemView.findViewById(R.id.garageCard);
             tvGarage = itemView.findViewById(R.id.tvGarage);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUsername = itemView.findViewById(R.id.tvProfileUsername);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvCreated = itemView.findViewById(R.id.tvCreated);
         }
