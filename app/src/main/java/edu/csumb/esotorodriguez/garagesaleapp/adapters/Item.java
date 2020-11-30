@@ -1,11 +1,16 @@
 package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
+import android.os.Parcelable;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
 @ParseClassName("Item")
+@Parcel(analyze = Item.class)
 public class Item extends ParseObject {
 
     public static final String KEY_POST = "postID";
@@ -14,7 +19,10 @@ public class Item extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_PRICE = "price";
     public static final String KEY_SOLD = "sold";
+
     public static final String KEY_CREATED_KEY = "createdAt";
+
+    public Item(){}
 
     public ParseObject getPost() {
         return getParseObject(KEY_POST);

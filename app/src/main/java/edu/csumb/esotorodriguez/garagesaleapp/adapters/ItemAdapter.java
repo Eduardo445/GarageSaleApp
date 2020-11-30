@@ -81,7 +81,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public void bind(final Item item){
             tvItemName.setText(item.getItemName());
             tvPrice.setText(String.valueOf(item.getPrice()));
-            tvCreated.setText(item.getCreatedAt().toString());
+            //tvCreated.setText(item.getCreatedAt().toString());
             ParseFile image = item.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivItem);

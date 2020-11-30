@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.csumb.esotorodriguez.garagesaleapp" >
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="edu.csumb.esotorodriguez.garagesaleapp">
 
     <application
         android:name=".ParseApplication"
@@ -13,12 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".UserProfile" >
-        </activity>
-        <activity android:name=".ItemActivity" />
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ItemActivity"></activity>
         <activity android:name=".ItemsActivity" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,5 +22,8 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
