@@ -10,9 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,19 +22,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-import edu.csumb.esotorodriguez.garagesaleapp.NewItemActivity;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
 import static android.app.Activity.RESULT_OK;

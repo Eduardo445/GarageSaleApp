@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.R;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.PostAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

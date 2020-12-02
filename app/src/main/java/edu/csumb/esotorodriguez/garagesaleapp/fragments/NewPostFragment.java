@@ -1,15 +1,11 @@
 package edu.csumb.esotorodriguez.garagesaleapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,15 +19,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import org.parceler.Parcels;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import edu.csumb.esotorodriguez.garagesaleapp.NewItemActivity;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
 /**

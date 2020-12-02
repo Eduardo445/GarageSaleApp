@@ -20,7 +20,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.csumb.esotorodriguez.garagesaleapp.ItemActivity;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
-import edu.csumb.esotorodriguez.garagesaleapp.ItemsActivity;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
