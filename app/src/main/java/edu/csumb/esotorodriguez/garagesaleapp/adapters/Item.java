@@ -1,13 +1,13 @@
 package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
-import android.os.Parcelable;
+        import android.os.Parcelable;
 
-import com.parse.ParseClassName;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
+        import com.parse.ParseClassName;
+        import com.parse.ParseFile;
+        import com.parse.ParseObject;
+        import com.parse.ParseUser;
 
-import org.parceler.Parcel;
+        import org.parceler.Parcel;
 
 @ParseClassName("Item")
 @Parcel(analyze = Item.class)
@@ -20,7 +20,7 @@ public class Item extends ParseObject {
     public static final String KEY_PRICE = "price";
     public static final String KEY_SOLD = "sold";
     public static final String KEY_USER = "userID";
-    public static final String KEY_BUYER = "buyerID";
+
     public static final String KEY_CREATED_KEY = "createdAt";
 
     public Item(){}
@@ -72,10 +72,5 @@ public class Item extends ParseObject {
     public ParseObject getUser() {
         return getParseObject(KEY_USER);
     }
-
-    public void setUser(ParseObject user){put(KEY_USER, user);}
-
-    public ParseObject getBuyer() {
-        return getParseObject(KEY_BUYER);
-    }
 }
+

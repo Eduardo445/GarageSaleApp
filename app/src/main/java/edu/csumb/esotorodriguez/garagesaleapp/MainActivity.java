@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
-import edu.csumb.esotorodriguez.garagesaleapp.fragments.ComposeFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.GaragePostsFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewItemFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewPostFragment;
@@ -16,7 +14,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.fragments.ProfileFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
