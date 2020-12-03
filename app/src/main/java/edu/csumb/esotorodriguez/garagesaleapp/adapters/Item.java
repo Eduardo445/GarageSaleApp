@@ -20,6 +20,7 @@ public class Item extends ParseObject {
     public static final String KEY_PRICE = "price";
     public static final String KEY_SOLD = "sold";
     public static final String KEY_USER = "userID";
+    public static final String KEY_BUYER = "buyerID";
 
     public static final String KEY_CREATED_KEY = "createdAt";
 
@@ -71,6 +72,10 @@ public class Item extends ParseObject {
 
     public ParseObject getUser() {
         return getParseObject(KEY_USER);
+    }
+
+    public ParseObject getBuyer() {
+        return getParseObject(KEY_BUYER);
     }
 }
 

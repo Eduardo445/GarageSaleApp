@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
     public static final String TAG = "ProfileFragment";
     TextView tvProfileUsername;
     RecyclerView rvSaleItems;
-    RecyclerView rvSoldItems;
+    RecyclerView rvBoughtItems;
     protected ItemAdapter adapter;
     protected ItemAdapter adapter2;
     protected List<Item> soldItems;
@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
         rvSaleItems = view.findViewById(R.id.rvSaleItems);
-        rvSoldItems = view.findViewById(R.id.rvSoldItems);
+        rvBoughtItems = view.findViewById(R.id.rvBoughtItems);
 
 
         tvProfileUsername.setText(ParseUser.getCurrentUser().getUsername());
@@ -65,13 +65,13 @@ public class ProfileFragment extends Fragment {
         adapter2 = new ItemAdapter(getContext(), soldItems);
 
         rvSaleItems.setAdapter(adapter);
-        rvSoldItems.setAdapter(adapter2);
+        rvBoughtItems.setAdapter(adapter2);
 
         rvSaleItems.setLayoutManager(new LinearLayoutManager(getContext()));
         querySaleItems();
 
-        rvSoldItems.setLayoutManager(new LinearLayoutManager(getContext()));
-        querySoldItems();
+        rvBoughtItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        queryBoughtItems();
     }
 
     protected void querySaleItems() {
@@ -96,7 +96,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    protected void querySoldItems() {
+    protected void queryBoughtItems() {
         ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
         query.include(Item.KEY_USER);
         query.addDescendingOrder(Item.KEY_CREATED_KEY);
@@ -109,10 +109,14 @@ public class ProfileFragment extends Fragment {
                 }
                 for (Item item : items ) {
                      Log.i(TAG, "Item: " + item.getItemName() + ", ID: " + item.getUser().getObjectId());
-                    if (item.getUser().getObjectId().equals(ParseUser.getCurrentUser().getObjectId()) && item.getSold()) {
-                        soldItems.add(item);
-                        adapter2.notifyDataSetChanged();
-                    }
+                     try {
+                         if (item.getBuyer().getObjectId().equals(ParseUser.getCurrentUser().getObjectId()) && item.getSold()) {
+                             soldItems.add(item);
+                             adapter2.notifyDataSetChanged();
+                         }
+                     } catch (Exception Null) {
+
+                     }
                 }
             }
         });
