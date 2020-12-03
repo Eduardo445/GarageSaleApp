@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,13 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.parceler.Parcels;
-
 import java.io.File;
 
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
-import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
-import edu.csumb.esotorodriguez.garagesaleapp.fragments.GarageItemFragment;
 import edu.csumb.esotorodriguez.garagesaleapp.fragments.NewPostFragment;
 
 public class NewItemActivity extends AppCompatActivity {

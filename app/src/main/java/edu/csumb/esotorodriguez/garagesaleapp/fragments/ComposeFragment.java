@@ -1,6 +1,5 @@
 package edu.csumb.esotorodriguez.garagesaleapp.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
