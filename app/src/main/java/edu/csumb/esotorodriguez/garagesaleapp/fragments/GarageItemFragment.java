@@ -26,9 +26,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class GarageItemFragment extends Fragment {
 
     public static final String TAG = "GarageItemFragment";
@@ -44,7 +41,6 @@ public class GarageItemFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         post = getArguments().getParcelable("ItemsActivity");
         return inflater.inflate(R.layout.fragment_garage_item, container, false);
     }
@@ -55,7 +51,6 @@ public class GarageItemFragment extends Fragment {
         rvItems = view.findViewById(R.id.rvItem);
 
         swipeContainerItem = view.findViewById(R.id.swipeContainerItem);
-        // Configure the refreshing colors
         swipeContainerItem.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
@@ -70,17 +65,9 @@ public class GarageItemFragment extends Fragment {
             }
         });
 
-        // Steps to use the recycler view:
-        // 0. create layout for one row in the list
-        // 1. create the adapter
-        // 2. create the data source
         allItems = new ArrayList<>();
         adapter = new ItemAdapter(getContext(), allItems);
-
-        // 3. set the adapter on the recycler view
         rvItems.setAdapter(adapter);
-
-        // 4. set the layout manager on the recycler
         rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryItems();
@@ -89,6 +76,7 @@ public class GarageItemFragment extends Fragment {
     protected void queryItems() {
         ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
         query.whereEqualTo("postID", post);
+        query.whereEqualTo("sold", false);
         query.include(Item.KEY_POST);
         query.setLimit(20);
         query.addDescendingOrder(Item.KEY_CREATED_KEY);
@@ -102,7 +90,6 @@ public class GarageItemFragment extends Fragment {
                 for (Item item: items) {
                     Log.i(TAG, "Item: " + item.getItemName() + ", price: " + item.getPrice());
                 }
-
                 allItems.addAll(items);
                 adapter.notifyDataSetChanged();
             }

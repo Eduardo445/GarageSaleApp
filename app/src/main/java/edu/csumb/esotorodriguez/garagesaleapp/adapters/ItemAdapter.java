@@ -1,5 +1,6 @@
 package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -55,12 +56,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    // Add a list of items -- change to type used
-    public void addAll(List<Item> list) {
-        items.addAll(list);
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView itemCard;
         private TextView tvItemName;
@@ -77,20 +72,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             ivItem = itemView.findViewById(R.id.ivItem);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(final Item item){
             tvItemName.setText(item.getItemName());
             tvPrice.setText(String.valueOf(item.getPrice()));
-            //tvCreated.setText(item.getCreatedAt().toString());
+
+            String dayMonth = item.getCreatedAt().toString().substring(0, 10);
+            String year = item.getCreatedAt().toString().substring(24);
+            tvCreated.setText(dayMonth + " " + year);
+
             ParseFile image = item.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivItem);
             }
 
-            // 1. Register click listener on the whole row
             itemCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // 2. Navigate to a new activity on tap
                     Intent i = new Intent(context, ItemActivity.class);
                     i.putExtra("itemPost", Parcels.wrap(item));
                     context.startActivity(i);

@@ -1,5 +1,6 @@
 package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -51,12 +52,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    // Add a list of items -- change to type used
-    public void addAll(List<Post> list) {
-        posts.addAll(list);
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView garageCard;
         private TextView tvGarage;
@@ -73,17 +68,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvCreated = itemView.findViewById(R.id.tvCreated);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(final Post post){
             tvGarage.setText(post.getSaleName());
             tvUsername.setText(post.getUser().getUsername());
             tvLocation.setText(post.getLocation());
-            tvCreated.setText(post.getCreatedAt().toString());
 
-            // 1. Register click listener on the whole row
+            String dayMonth = post.getCreatedAt().toString().substring(0, 10);
+            String year = post.getCreatedAt().toString().substring(24);
+            tvCreated.setText(dayMonth + " " + year);
+
             garageCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // 2. Navigate to a new activity on tap
                     Intent i = new Intent(context, ItemsActivity.class);
                     i.putExtra("garagePost", Parcels.wrap(post));
                     context.startActivity(i);

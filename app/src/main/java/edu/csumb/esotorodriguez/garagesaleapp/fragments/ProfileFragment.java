@@ -31,7 +31,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.R;
 
 public class ProfileFragment extends Fragment {
 
-    // declare
     public static final String TAG = "ProfileFragment";
     TextView tvProfileUsername;
     RecyclerView rvSaleItems;
@@ -42,14 +41,12 @@ public class ProfileFragment extends Fragment {
     protected List<Item> soldItems;
     protected List<Item> saleItems;
 
-
     public ProfileFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -127,7 +124,7 @@ public class ProfileFragment extends Fragment {
                              adapter2.notifyDataSetChanged();
                          }
                      } catch (Exception Null) {
-
+                         Log.e(TAG, "Failed to get bought items.", Null);
                      }
                 }
             }

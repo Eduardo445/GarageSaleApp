@@ -11,12 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
+
     public static final String TAG = "LoginActivity";
     private EditText etUsername;
     private EditText etPassword;
@@ -74,18 +74,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signupUser(final String username, final String password) {
         Log.i(TAG, "Attempting to signup user " + username);
-        // Create the ParseUser
         final ParseUser user = new ParseUser();
-        // Set core properties
         user.setUsername(username);
         user.setPassword(password);
-        // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e != null) {
-                    // TODO: better error handling
                     Log.e(TAG, "Issue with signup", e);
-                    Toast.makeText(LoginActivity.this, "Issue with singup", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Issue with signup", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     Toast.makeText(LoginActivity.this, "Success! Now login!", Toast.LENGTH_SHORT).show();
