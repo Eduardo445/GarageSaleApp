@@ -43,7 +43,7 @@
             android:id="@+id/tvItemsBought"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="Items bought"
             android:textSize="18sp"
@@ -60,7 +60,7 @@
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="@string/logout" />
+            android:layout_marginTop="10dp"
+            android:text="Logout" />
 
 </LinearLayout>
