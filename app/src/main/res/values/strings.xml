@@ -5,4 +5,5 @@
     <string name="garage_sale_name">Garage Sale Name</string>
     <string name="garage_sale_person">Garage Sale Person</string>
     <string name="garage_sale_location">Garage Sale Location</string>
+    <string name="logout">Logout</string>
 </resources>
