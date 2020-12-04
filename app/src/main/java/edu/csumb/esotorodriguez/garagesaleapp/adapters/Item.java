@@ -74,6 +74,10 @@ public class Item extends ParseObject {
         return getParseObject(KEY_USER);
     }
 
+    public void setUser(ParseObject user) {
+        put(KEY_USER, user);
+    }
+
     public ParseObject getBuyer() {
         return getParseObject(KEY_BUYER);
     }
