@@ -43,7 +43,6 @@ public class GaragePostsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_garage_posts, container, false);
     }
 
@@ -53,7 +52,6 @@ public class GaragePostsFragment extends Fragment {
         rvPosts = view.findViewById(R.id.rvPost);
 
         swipeContainer = view.findViewById(R.id.swipeContainer);
-        // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
@@ -68,17 +66,9 @@ public class GaragePostsFragment extends Fragment {
             }
         });
 
-        // Steps to use the recycler view:
-        // 0. create layout for one row in the list
-        // 1. create the adapter
-        // 2. create the data source
         allPosts = new ArrayList<>();
         adapter = new PostAdapter(getContext(), allPosts);
-
-        // 3. set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
-
-        // 4. set the layout manager on the recycler
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts();
@@ -86,8 +76,9 @@ public class GaragePostsFragment extends Fragment {
 
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.whereNotEqualTo("userID", ParseUser.getCurrentUser().getObjectId());
         query.include(Post.KEY_USER);
-        query.setLimit(20);
+        query.whereEqualTo("closed", false);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
         query.findInBackground(new FindCallback<Post>() {
             @Override
@@ -99,7 +90,6 @@ public class GaragePostsFragment extends Fragment {
                 for (Post post: posts) {
                     Log.i(TAG, "Garage: " + post.getSaleName() + ", username: " + post.getUser().getUsername());
                 }
-
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
