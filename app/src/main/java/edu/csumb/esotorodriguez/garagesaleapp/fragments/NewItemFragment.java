@@ -35,15 +35,8 @@ import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewItemFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NewItemFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -59,12 +52,7 @@ public class NewItemFragment extends Fragment {
     public static final String TAG = "NewItemActivity";
     private Item item;
     private Post post;
-    /*
-    private RecyclerView rvItems;
-    protected ItemAdapter adapter;
-    protected List<Item> allItems;
-    */
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -72,23 +60,14 @@ public class NewItemFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewItemFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewItemFragment newInstance(String param1, String param2) {
-        NewItemFragment fragment = new NewItemFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    public static NewItemFragment newInstance(String param1, String param2) {
+//        NewItemFragment fragment = new NewItemFragment();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,7 +81,6 @@ public class NewItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         if (getArguments() != null){
             post = getArguments().getParcelable("NewPostFragment");
             post = getArguments().getParcelable("MainActivity");
@@ -120,18 +98,6 @@ public class NewItemFragment extends Fragment {
         btnAdd = getView().findViewById(R.id.btnAdd);
 
         item = new Item();
-        /*
-        rvItems = getView().findViewById(R.id.rvItem);
-        allItems = new ArrayList<>();
-        adapter = new ItemAdapter(getContext(), allItems);
-
-        // 3. set the adapter on the recycler view
-        rvItems.setAdapter(adapter);
-
-        // 4. set the layout manager on the recycler
-        rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryItems();
-        */
         btnTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,8 +138,6 @@ public class NewItemFragment extends Fragment {
                         etPrice.setText("");
                         ivImage.setImageResource(0);
                         Toast.makeText(getContext(), "Successfully added item!", Toast.LENGTH_SHORT).show();
-                        //allItems.clear();
-                        //queryItems();
                     }
                 });
             }
@@ -181,30 +145,7 @@ public class NewItemFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
     }
-    /*
-    protected void queryItems() {
-        ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
-        query.whereEqualTo("postID", post);
-        query.include(Item.KEY_POST);
-        query.setLimit(20);
-        query.addDescendingOrder(Item.KEY_CREATED_KEY);
-        query.findInBackground(new FindCallback<Item>() {
-            @Override
-            public void done(List<Item> items, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting posts", e);
-                    return;
-                }
-                for (Item item: items) {
-                    Log.i(TAG, "Item: " + item.getItemName() + ", price: " + item.getPrice());
-                }
 
-                allItems.addAll(items);
-                adapter.notifyDataSetChanged();
-            }
-        });
-    }
-    */
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

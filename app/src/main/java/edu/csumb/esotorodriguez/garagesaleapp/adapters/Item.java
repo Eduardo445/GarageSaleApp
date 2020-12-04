@@ -1,13 +1,10 @@
 package edu.csumb.esotorodriguez.garagesaleapp.adapters;
 
-        import android.os.Parcelable;
+import com.parse.ParseClassName;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 
-        import com.parse.ParseClassName;
-        import com.parse.ParseFile;
-        import com.parse.ParseObject;
-        import com.parse.ParseUser;
-
-        import org.parceler.Parcel;
+import org.parceler.Parcel;
 
 @ParseClassName("Item")
 @Parcel(analyze = Item.class)

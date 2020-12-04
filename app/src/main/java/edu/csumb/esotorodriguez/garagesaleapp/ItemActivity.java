@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -23,8 +22,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.parceler.Parcels;
-
-import java.util.List;
 
 public class ItemActivity extends AppCompatActivity {
 
@@ -35,7 +32,6 @@ public class ItemActivity extends AppCompatActivity {
     private TextView tvPrice;
     private Button btnPurchase;
     private Item item;
-    private boolean passed;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -63,8 +59,13 @@ public class ItemActivity extends AppCompatActivity {
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                purchasedItem();
-                purchasedComplete();
+
+                if (item.getUser().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
+                    Toast.makeText(ItemActivity.this, "Cannot buy your own Items!", Toast.LENGTH_SHORT).show();
+                } else {
+                    purchasedItem();
+                    purchasedComplete();
+                }
             }
         });
     }

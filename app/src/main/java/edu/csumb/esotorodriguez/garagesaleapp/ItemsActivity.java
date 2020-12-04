@@ -12,6 +12,7 @@ import android.widget.TextView;
 import org.parceler.Parcels;
 
 public class ItemsActivity extends AppCompatActivity {
+
     public static final String TAG = "ItemsActivity";
     private TextView tvGarageName;
     private TextView tvGarageOwner;
@@ -36,7 +37,6 @@ public class ItemsActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(TAG, post);
-
 
         Fragment fragment = new GarageItemFragment();
         fragment.setArguments(bundle);

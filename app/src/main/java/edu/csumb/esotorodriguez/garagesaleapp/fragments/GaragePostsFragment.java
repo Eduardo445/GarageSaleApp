@@ -26,9 +26,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.PostAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class GaragePostsFragment extends Fragment {
 
     public static final String TAG = "GaragePostsFragment";
@@ -78,7 +75,6 @@ public class GaragePostsFragment extends Fragment {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.whereNotEqualTo("userID", ParseUser.getCurrentUser().getObjectId());
         query.include(Post.KEY_USER);
-        query.whereEqualTo("closed", false);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
         query.findInBackground(new FindCallback<Post>() {
             @Override

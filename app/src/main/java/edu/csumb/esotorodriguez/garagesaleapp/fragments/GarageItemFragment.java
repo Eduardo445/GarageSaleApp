@@ -26,9 +26,6 @@ import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Post;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class GarageItemFragment extends Fragment {
 
     public static final String TAG = "GarageItemFragment";
@@ -93,7 +90,6 @@ public class GarageItemFragment extends Fragment {
                 for (Item item: items) {
                     Log.i(TAG, "Item: " + item.getItemName() + ", price: " + item.getPrice());
                 }
-
                 allItems.addAll(items);
                 adapter.notifyDataSetChanged();
             }
