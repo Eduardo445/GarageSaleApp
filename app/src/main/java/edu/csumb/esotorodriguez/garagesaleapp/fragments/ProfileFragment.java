@@ -42,6 +42,7 @@ public class ProfileFragment extends Fragment {
     protected List<Item> saleItems;
     private Button btnLogout;
 
+
     public ProfileFragment() {
         // Required empty public constructor
     }
