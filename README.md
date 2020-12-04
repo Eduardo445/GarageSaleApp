@@ -31,17 +31,13 @@ Allows users to upload their garage sale location as well as the items that they
  * Login [x]
  * Home Screen that shows all the garage sales itens [x]
  * Able to click on garage sale item for details and purchase [x]
- 
- ------------------------------------------------------------------
- TODO
- * Able to make a new listing item
- * See a list of items purchase in profile
- * See a list of items that you are selling in profile
- * Logout, Signout 
+ * Able to make a new listing item [x]
+ * See a list of items purchase in profile [x]
+ * See a list of items that you are selling in profile [x]
+ * Logout [x]
 
  ### Video
  <img src='recording.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
- <img src='recording112720.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 **Optional Nice-to-have Stories**
 
  * Filter the Garage Sales in Home Screen
