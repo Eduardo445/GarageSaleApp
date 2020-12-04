@@ -41,7 +41,6 @@ public class ProfileFragment extends Fragment {
     protected ItemAdapter adapter2;
     protected List<Item> soldItems;
     protected List<Item> saleItems;
-    private Button btnLogout;
 
 
     public ProfileFragment() {
