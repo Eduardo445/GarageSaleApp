@@ -1,5 +1,6 @@
 package edu.csumb.esotorodriguez.garagesaleapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import edu.csumb.esotorodriguez.garagesaleapp.LoginActivity;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.ItemAdapter;
 import edu.csumb.esotorodriguez.garagesaleapp.adapters.Item;
 import edu.csumb.esotorodriguez.garagesaleapp.R;
@@ -37,6 +40,7 @@ public class ProfileFragment extends Fragment {
     protected ItemAdapter adapter2;
     protected List<Item> soldItems;
     protected List<Item> saleItems;
+    private Button btnLogout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -54,7 +58,7 @@ public class ProfileFragment extends Fragment {
         tvProfileUsername = view.findViewById(R.id.tvProfileUsername);
         rvSaleItems = view.findViewById(R.id.rvSaleItems);
         rvBoughtItems = view.findViewById(R.id.rvBoughtItems);
-
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         tvProfileUsername.setText(ParseUser.getCurrentUser().getUsername());
 
@@ -72,6 +76,13 @@ public class ProfileFragment extends Fragment {
 
         rvBoughtItems.setLayoutManager(new LinearLayoutManager(getContext()));
         queryBoughtItems();
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goLoginActivity();
+            }
+        });
     }
 
     protected void querySaleItems() {
@@ -120,5 +131,12 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void goLoginActivity() {
+        ParseUser.logOut();
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 }

@@ -32,7 +32,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSaleItems"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="222dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -52,8 +52,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBoughtItems"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="222dp"
             tools:layout_editor_absoluteX="32dp"
             tools:layout_editor_absoluteY="262dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/logout" />
 
 </LinearLayout>

@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new GaragePostsFragment();
                         break;
                     case R.id.action_compose:
-                        /*
-                        //tried this but it doesnt work
-                        fragment = new ComposeFragment();
-                         */
                         if(doesPostExist()){
                             fragment = new NewItemFragment();
                             Bundle bundle = new Bundle();
