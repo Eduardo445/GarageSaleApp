@@ -32,7 +32,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSaleItems"
             android:layout_width="match_parent"
-            android:layout_height="222dp"
+            android:layout_height="170dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -43,7 +43,7 @@
             android:id="@+id/tvItemsBought"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="Items bought"
             android:textSize="18sp"
@@ -52,7 +52,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBoughtItems"
             android:layout_width="match_parent"
-            android:layout_height="222dp"
+            android:layout_height="170dp"
             tools:layout_editor_absoluteX="32dp"
             tools:layout_editor_absoluteY="262dp" />
 
@@ -60,7 +60,7 @@
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="@string/logout" />
+            android:layout_marginTop="10dp"
+            android:text="Logout" />
 
 </LinearLayout>

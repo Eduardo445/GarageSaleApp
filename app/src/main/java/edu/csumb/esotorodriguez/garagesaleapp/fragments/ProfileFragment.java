@@ -36,11 +36,11 @@ public class ProfileFragment extends Fragment {
     TextView tvProfileUsername;
     RecyclerView rvSaleItems;
     RecyclerView rvBoughtItems;
+    Button btnLogout;
     protected ItemAdapter adapter;
     protected ItemAdapter adapter2;
     protected List<Item> soldItems;
     protected List<Item> saleItems;
-    private Button btnLogout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -80,7 +80,9 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goLoginActivity();
+                ParseUser.logOut();
+                Intent i = new Intent(getActivity().getApplication(), LoginActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -131,12 +133,5 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private void goLoginActivity() {
-        ParseUser.logOut();
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-        getActivity().finish();
     }
 }
