@@ -19,7 +19,8 @@ public class Item extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_PRICE = "price";
     public static final String KEY_SOLD = "sold";
-
+    public static final String KEY_USER = "userID";
+    public static final String KEY_BUYER = "buyerID";
     public static final String KEY_CREATED_KEY = "createdAt";
 
     public Item(){}
@@ -64,4 +65,17 @@ public class Item extends ParseObject {
         put(KEY_PRICE, price);
     }
 
+    public Boolean getSold() {
+        return getBoolean(KEY_SOLD);
+    }
+
+    public ParseObject getUser() {
+        return getParseObject(KEY_USER);
+    }
+
+    public void setUser(ParseObject user){put(KEY_USER, user);}
+
+    public ParseObject getBuyer() {
+        return getParseObject(KEY_BUYER);
+    }
 }

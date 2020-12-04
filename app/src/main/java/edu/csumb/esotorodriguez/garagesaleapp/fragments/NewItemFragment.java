@@ -28,6 +28,10 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
@@ -156,10 +160,16 @@ public class NewItemFragment extends Fragment {
                     Toast.makeText(getContext(), "Some field is empty!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(photoFile == null || ivImage.getDrawable() == null){
+                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 item.setDescription(description);
                 item.setItemName(name);
                 item.setPrice(price);
                 item.setPost(post);
+                item.setImage(new ParseFile(photoFile));
+                item.setUser(ParseUser.getCurrentUser());
                 item.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
