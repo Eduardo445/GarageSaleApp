@@ -36,11 +36,12 @@ public class ProfileFragment extends Fragment {
     TextView tvProfileUsername;
     RecyclerView rvSaleItems;
     RecyclerView rvBoughtItems;
+    Button btnLogout;
     protected ItemAdapter adapter;
     protected ItemAdapter adapter2;
     protected List<Item> soldItems;
     protected List<Item> saleItems;
-    private Button btnLogout;
+
 
     public ProfileFragment() {
         // Required empty public constructor
