@@ -60,15 +60,6 @@ public class NewItemFragment extends Fragment {
         // Required empty public constructor
     }
 
-//    public static NewItemFragment newInstance(String param1, String param2) {
-//        NewItemFragment fragment = new NewItemFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,10 +100,17 @@ public class NewItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String name = etName.getText().toString();
-                Double price =  Double.parseDouble(etPrice.getText().toString());
+                double price = 0.0;
+                if (!etPrice.getText().toString().equals("")) {
+                    price =  Double.parseDouble(etPrice.getText().toString());
+                }
                 String description = etDescription.getText().toString();
-                if (name.isEmpty() || price.isNaN() || description.isEmpty()){
+                if (name.isEmpty() || description.isEmpty()){
                     Toast.makeText(getContext(), "Some field is empty!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (price <= 0) {
+                    Toast.makeText(getContext(), "Cannot sell item for $0!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(photoFile == null || ivImage.getDrawable() == null){
