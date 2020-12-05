@@ -72,10 +72,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             ivItem = itemView.findViewById(R.id.ivItem);
         }
 
-        @SuppressLint("SetTextI18n")
+        @SuppressLint({"SetTextI18n", "DefaultLocale"})
         public void bind(final Item item){
             tvItemName.setText(item.getItemName());
-            tvPrice.setText(String.valueOf(item.getPrice()));
+            double price = item.getPrice();
+            tvPrice.setText(String.format("$%.2f", price));
 
             String dayMonth = item.getCreatedAt().toString().substring(0, 10);
             String year = item.getCreatedAt().toString().substring(24);

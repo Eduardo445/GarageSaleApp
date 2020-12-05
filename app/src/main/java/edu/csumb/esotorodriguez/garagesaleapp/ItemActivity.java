@@ -33,7 +33,7 @@ public class ItemActivity extends AppCompatActivity {
     private Button btnPurchase;
     private Item item;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,8 @@ public class ItemActivity extends AppCompatActivity {
         assert item != null;
         tvItem.setText(item.getItemName());
         tvDescription.setText(item.getDescription());
-        tvPrice.setText("Price: $" + item.getPrice());
+        double price = item.getPrice();
+        tvPrice.setText(String.format("Price: $%.2f", price));
 
         ParseFile image = item.getImage();
         if (image != null) {
@@ -62,6 +63,10 @@ public class ItemActivity extends AppCompatActivity {
 
                 if (item.getUser().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
                     Toast.makeText(ItemActivity.this, "Cannot buy your own Items!", Toast.LENGTH_SHORT).show();
+                } else if (item.getBuyer() != null) {
+                    if (item.getBuyer().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
+                        Toast.makeText(ItemActivity.this, "You already bought this item!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     purchasedItem();
                     purchasedComplete();
