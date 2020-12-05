@@ -57,10 +57,17 @@ public class ItemActivity extends AppCompatActivity {
             Glide.with(this).load(image.getUrl()).into(ivImage);
         }
 
+        if (item.getUser().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
+            btnPurchase.setVisibility(View.GONE);
+        } else if (item.getBuyer() != null) {
+            if (item.getBuyer().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
+                btnPurchase.setVisibility(View.GONE);
+            }
+        }
+
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (item.getUser().getObjectId().contentEquals(ParseUser.getCurrentUser().getObjectId())) {
                     Toast.makeText(ItemActivity.this, "Cannot buy your own Items!", Toast.LENGTH_SHORT).show();
                 } else if (item.getBuyer() != null) {
@@ -77,6 +84,7 @@ public class ItemActivity extends AppCompatActivity {
 
     private void purchasedComplete() {
         Intent intent = new Intent(this, MainActivity.class);
+        Toast.makeText(ItemActivity.this, "Your purchase is complete!", Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 
